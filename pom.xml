@@ -5,14 +5,18 @@
 
   <groupId>com.fdherrera</groupId>
   <artifactId>microservices-demo</artifactId>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>customer</module>
+  </modules>
 
   <name>microservices-demo</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <spring.boot.plugin.version>3.0.2</spring.boot.plugin.version>
     <spring.boot.version>3.0.2</spring.boot.version>
   </properties>
