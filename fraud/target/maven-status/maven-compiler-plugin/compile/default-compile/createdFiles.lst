@@ -1,6 +1,0 @@
-com\fdherrera\controller\FraudController.class
-com\fdherrera\service\FraudCheckService.class
-com\fdherrera\repo\FraudCheckHistoryRepo.class
-com\fdherrera\model\FraudCheckHistory.class
-com\fdherrera\FraudApplication.class
-com\fdherrera\dto\FraudCheckResponse.class
