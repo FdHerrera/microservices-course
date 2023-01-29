@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdherrera.dto.request.CustomerRequest;
+import com.fdherrera.dto.request.NotificationRequest;
 import com.fdherrera.dto.response.FraudCheckResponse;
 import com.fdherrera.model.Customer;
 import com.fdherrera.repo.CustomerRepo;
@@ -18,13 +19,15 @@ public record CustomerService(CustomerRepo customerRepo, ObjectMapper mapper, Re
 
 	public void signUpCustomer(CustomerRequest request) {
 		Customer customer = mapper.convertValue(request, Customer.class);
-		//TODO validate
+		// TODO validate
 		customerRepo.saveAndFlush(customer);
-		FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}", FraudCheckResponse.class, customer.getId());
+		FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}",
+				FraudCheckResponse.class, customer.getId());
 		logger.info(fraudCheckResponse.toString());
 		if (fraudCheckResponse.isFraudulent()) {
 			throw new IllegalStateException("Is a fraudster customer");
 		}
+		restTemplate.postForEntity("http://NOTIFICATION/api/v1/notification",
+				new NotificationRequest(customer.getId(), customer.getEmail(), "Thanks for registering!"), Void.class);
 	}
-
 }

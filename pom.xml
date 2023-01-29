@@ -11,6 +11,7 @@
     <module>customer</module>
     <module>fraud</module>
     <module>eureka-server</module>
+    <module>notification</module>
   </modules>
 
   <name>microservices-demo</name>
