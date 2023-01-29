@@ -1,5 +1,7 @@
 package com.fdherrera.controller;
 
+import java.util.logging.Logger;
+
 import com.fdherrera.dto.FraudCheckResponse;
 import com.fdherrera.service.FraudCheckService;
 
@@ -13,9 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/fraud-check")
 public record FraudController(FraudCheckService fraudCheckService) {
 
+	private static final Logger log = Logger.getLogger(FraudController.class.getSimpleName());
+
 	@GetMapping("{customerId}")
 	public ResponseEntity<FraudCheckResponse> isFraudster(@PathVariable Integer customerId) {
-		return ResponseEntity.ok(new FraudCheckResponse(fraudCheckService.isFraudulentCustomer(customerId)));
+		FraudCheckResponse response = new FraudCheckResponse(fraudCheckService.isFraudulentCustomer(customerId));
+		log.info("Response: " + response.toString());
+		return ResponseEntity.ok(response);
 	}
 
 }

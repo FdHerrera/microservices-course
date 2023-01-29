@@ -1,16 +1,10 @@
-package com.fdherrera.dto;
+package com.fdherrera.dto.response;
 
 public class FraudCheckResponse {
+
 	private Boolean isFraudulent;
 
-	public FraudCheckResponse() {
-	}
-
-	public FraudCheckResponse(Boolean isFraudulent) {
-		this.isFraudulent = isFraudulent;
-	}
-
-	public Boolean getIsFraudulent() {
+	public Boolean isFraudulent() {
 		return isFraudulent;
 	}
 

@@ -1,16 +1,15 @@
 package com.fdherrera.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class AdditionalBeans {
 
 	@Bean
-	public ObjectMapper mapper() {
-		return new ObjectMapper();
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 }
