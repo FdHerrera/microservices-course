@@ -5,10 +5,18 @@ public class CustomerRequest {
 	private String lastName;
 	private String email;
 
+	public CustomerRequest() {
+	}
+
 	public CustomerRequest(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerRequest [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 	public String getFirstName() {

@@ -19,7 +19,7 @@ public record Controller(CustomerService customerservice) {
 
 	@PostMapping
 	public ResponseEntity<Void> createNewCustomer(@RequestBody CustomerRequest request) {
-		log.info("Create new customer request: {}" + request);
+		log.info("Create new customer request: " + request);
 		customerservice.signUpCustomer(request);
 		return ResponseEntity.ok(null);
 	}
