@@ -12,6 +12,7 @@
     <module>fraud</module>
     <module>eureka-server</module>
     <module>notification</module>
+    <module>rabbit-queue</module>
   </modules>
 
   <name>microservices-demo</name>
