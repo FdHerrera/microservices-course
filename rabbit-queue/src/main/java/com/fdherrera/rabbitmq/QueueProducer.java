@@ -26,7 +26,7 @@ public class QueueProducer {
 	}
 
 	public void publishMessage(Object msg) {
-		log.info("Publishing a message in queue: " + msg);
+		log.info("Publishing a message: " + msg + " in queue: " + queue.getName());
 
 		try {
 			rabbitTemplate.convertAndSend(queue.getName(), mapper.writeValueAsString(msg));
