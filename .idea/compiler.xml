@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="notification" />
+        <module name="client" />
+        <module name="rabbit-queue" />
         <module name="eureka-server" />
         <module name="fraud" />
         <module name="customer" />

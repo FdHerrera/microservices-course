@@ -13,6 +13,7 @@
     <module>eureka-server</module>
     <module>notification</module>
     <module>rabbit-queue</module>
+      <module>client</module>
   </modules>
 
   <name>microservices-demo</name>
