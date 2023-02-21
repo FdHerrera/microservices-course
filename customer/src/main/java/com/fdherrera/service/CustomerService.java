@@ -27,7 +27,7 @@ public record CustomerService(CustomerRepo customerRepo, ObjectMapper mapper, Re
 		if (fraudCheckResponse.isFraudulent()) {
 			throw new IllegalStateException("Is a fraudster customer");
 		}
-		restTemplate.postForEntity("http://NOTIFICATION/api/v1/notification",
+		restTemplate.postForObject("http://RABBIT-QUEUE/api/v1/queue/notifications",
 				new NotificationRequest(customer.getId(), customer.getEmail(), "Thanks for registering!"), Void.class);
 	}
 }
