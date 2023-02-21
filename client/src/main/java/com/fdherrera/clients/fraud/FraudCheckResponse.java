@@ -1,10 +1,16 @@
-package com.fdherrera.dto.response;
+package com.fdherrera.clients.fraud;
 
 public class FraudCheckResponse {
-
 	private Boolean isFraudulent;
 
-	public Boolean isFraudulent() {
+	public FraudCheckResponse() {
+	}
+
+	public FraudCheckResponse(Boolean isFraudulent) {
+		this.isFraudulent = isFraudulent;
+	}
+
+	public Boolean getIsFraudulent() {
 		return isFraudulent;
 	}
 
@@ -18,3 +24,4 @@ public class FraudCheckResponse {
 	}
 
 }
+
