@@ -5,8 +5,9 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdherrera.clients.fraud.FraudCheckResponse;
 import com.fdherrera.clients.fraud.FraudFeignClient;
+import com.fdherrera.clients.rabbitqueue.NotificationRequest;
+import com.fdherrera.clients.rabbitqueue.RabbitQueueFeignClient;
 import com.fdherrera.dto.request.CustomerRequest;
-import com.fdherrera.dto.request.NotificationRequest;
 import com.fdherrera.model.Customer;
 import com.fdherrera.repo.CustomerRepo;
 
@@ -22,12 +23,14 @@ public class CustomerService {
 	private final RestTemplate restTemplate;
 	private final CustomerRepo customerRepo;
 	private final FraudFeignClient fraudClient;
+	private final RabbitQueueFeignClient rabbitClient;
 
-	public CustomerService(ObjectMapper mapper, RestTemplate restTemplate, CustomerRepo customerRepo, FraudFeignClient fraudClient) {
+	public CustomerService(ObjectMapper mapper, RestTemplate restTemplate, CustomerRepo customerRepo, FraudFeignClient fraudClient, RabbitQueueFeignClient rabbitClient) {
 		this.mapper = mapper;
 		this.restTemplate = restTemplate;
 		this.customerRepo = customerRepo;
 		this.fraudClient = fraudClient;
+		this.rabbitClient = rabbitClient;
 	}
 
 	public void signUpCustomer(CustomerRequest request) {
@@ -39,7 +42,6 @@ public class CustomerService {
 		if (fraudCheckResponse.getIsFraudulent()) {
 			throw new IllegalStateException("Is a fraudster customer");
 		}
-		restTemplate.postForObject("http://RABBIT-QUEUE/api/v1/queue/notifications",
-				new NotificationRequest(customer.getId(), customer.getEmail(), "Thanks for registering!"), Void.class);
+		rabbitClient.postNotificationInQueue(new NotificationRequest(customer.getId(), customer.getEmail(), "Thanks for registering!"));
 	}
 }
