@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fdherrera.clients.fraud.FraudCheckResponse;
 import com.fdherrera.clients.fraud.FraudFeignClient;
-import com.fdherrera.clients.rabbitqueue.NotificationRequest;
+import com.fdherrera.clients.notification.NotificationRequest;
 import com.fdherrera.clients.rabbitqueue.RabbitQueueFeignClient;
 import com.fdherrera.dto.request.CustomerRequest;
 import com.fdherrera.model.Customer;
@@ -20,14 +20,12 @@ public class CustomerService {
 	private static final Logger logger = Logger.getLogger(CustomerService.class.getSimpleName());
 
 	private final ObjectMapper mapper;
-	private final RestTemplate restTemplate;
 	private final CustomerRepo customerRepo;
 	private final FraudFeignClient fraudClient;
 	private final RabbitQueueFeignClient rabbitClient;
 
-	public CustomerService(ObjectMapper mapper, RestTemplate restTemplate, CustomerRepo customerRepo, FraudFeignClient fraudClient, RabbitQueueFeignClient rabbitClient) {
+	public CustomerService(ObjectMapper mapper, CustomerRepo customerRepo, FraudFeignClient fraudClient, RabbitQueueFeignClient rabbitClient) {
 		this.mapper = mapper;
-		this.restTemplate = restTemplate;
 		this.customerRepo = customerRepo;
 		this.fraudClient = fraudClient;
 		this.rabbitClient = rabbitClient;

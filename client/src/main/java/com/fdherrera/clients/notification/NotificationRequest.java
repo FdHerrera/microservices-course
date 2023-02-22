@@ -1,4 +1,4 @@
-package com.fdherrera.dto;
+package com.fdherrera.clients.notification;
 
 import java.io.Serializable;
 
@@ -6,6 +6,15 @@ public class NotificationRequest implements Serializable {
     private Integer toCustomerId;
     private String toCustomerEmail;
     private String message;
+
+    public NotificationRequest() {
+    }
+
+    public NotificationRequest(Integer toCustomerId, String toCustomerEmail, String message) {
+        this.toCustomerId = toCustomerId;
+        this.toCustomerEmail = toCustomerEmail;
+        this.message = message;
+    }
 
     public Integer getToCustomerId() {
         return toCustomerId;

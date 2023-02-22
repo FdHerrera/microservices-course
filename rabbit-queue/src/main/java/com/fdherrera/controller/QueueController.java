@@ -1,6 +1,6 @@
 package com.fdherrera.controller;
 
-import com.fdherrera.dto.NotificationRequest;
+import com.fdherrera.clients.notification.NotificationRequest;
 import com.fdherrera.rabbitmq.QueueProducer;
 
 import org.springframework.http.ResponseEntity;
