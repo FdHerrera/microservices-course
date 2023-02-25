@@ -14,6 +14,7 @@
     <module>notification</module>
     <module>rabbit-queue</module>
       <module>client</module>
+      <module>api-gw</module>
   </modules>
 
   <name>microservices-demo</name>

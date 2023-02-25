@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="notification" />
-        <module name="client" />
+        <module name="api-gw" />
         <module name="rabbit-queue" />
-        <module name="eureka-server" />
         <module name="fraud" />
+        <module name="client" />
+        <module name="eureka-server" />
         <module name="customer" />
       </profile>
     </annotationProcessing>
